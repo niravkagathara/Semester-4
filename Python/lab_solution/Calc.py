@@ -1,0 +1,1 @@
+calculate=lambda x,y,op:print(x+y) if op=="+" else print(x-y) if op=="-" else print(x/y) if op=="/" else print(x*y) if op=="*" else print(x//y) if op=="//" else print("enter following opration + - * / // ")

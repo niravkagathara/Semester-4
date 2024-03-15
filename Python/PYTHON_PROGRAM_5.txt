@@ -1,0 +1,173 @@
+PYTHON PROGRAM
+LAB - 5:
+
+--1--
+total =0
+li = []
+
+n = int(input("Enter number of elements : "))
+
+for i in range(0, n):
+    ele = int(input())
+    li.append(ele)  
+
+for ele in range(0, len(li)):
+    total = total + li[ele]
+
+print("Sum of all elements in given list: ", total)
+
+--2--
+list1=[]
+n =int(input("Enter Element of list "))
+for i in range(0,n):
+    element = int(input("enter number of list"))
+    list1.append(element)
+    
+list1.sort()
+
+print("Largest element is:", list1[-1])
+
+--3--
+
+list1=[]
+n =int(input("Enter Element of list "))
+for i in range(0,n):
+    element = int(input("enter number of list"))
+    list1.append(element)
+    
+split_index = len(list1) // 2
+first_part = list1[:split_index]
+second_part = list1[split_index:]
+
+new_list = second_part + first_part
+
+print("Original List:", list1)
+print("List after splitting", new_list)
+
+
+
+--4--
+user_input = input("Enter elements of the list separated by spaces: ")
+
+user_list = [int(num) for num in user_input.split()]
+
+if user_list:
+    user_list[0], user_list[-1] = user_list[-1], user_list[0]
+    print("Original List:", user_input)
+    print("List after interchanging first and last elements:", user_list)
+else:
+    print("List is empty.")
+
+--5--
+user_input = input("Enter elements of the list separated by spaces: ")
+user_list = [int(num) for num in user_input.split()]
+if user_list:
+    position1 = int(input("Enter the first position to interchange: "))
+    position2 = int(input("Enter the second position to interchange: "))
+
+    if 0 <= position1 < len(user_list) and 0 <= position2 < len(user_list):
+
+        user_list[position1], user_list[position2] = user_list[position2], user_list[position1]
+
+        print("Original List:", user_input)
+        print(f"List after interchanging elements at positions {position1} and {position2}:", user_list)
+    else:
+        print("Invalid positions. Please enter valid positions.")
+else:
+    print("List is empty.")
+
+--6--
+user_input = input("Enter elements of the list separated by spaces: ")
+
+user_list = [int(num) for num in user_input.split()]
+
+if user_list:
+    user_list.reverse()
+
+    print("Original List:", user_input)
+    print("Reversed List:", user_list)
+else:
+    print("List is empty.")
+
+--7--
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+elements_to_remove = [2, 4, 6]
+my_list = [element for element in my_list if element not in elements_to_remove]
+
+print("Original List:", my_list)
+
+--8--
+original_list = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+
+start_index = 2
+end_index = 6
+
+new_list = original_list[start_index:end_index + 1]
+
+print("Original List:", original_list)
+print(f"New List from index {start_index} to {end_index}:", new_list)
+
+--9--
+user_input = input("Enter comma-separated elements: ")
+
+user_list = user_input.split(',')
+
+print("List created from input:", user_list)
+
+--10--
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+even_count = 0
+odd_count = 0
+
+for number in my_list:
+    if number % 2 == 0:
+        even_count += 1
+    else:
+        odd_count += 1
+
+print("Original List:", my_list)
+print("Count of even numbers:", even_count)
+print("Count of odd numbers:", odd_count)
+
+--11--
+ 
+def Nmaxelements(list1, N):
+    final_list = []
+ 
+    for i in range(0, N):
+        max1 = 0
+ 
+        for j in range(len(list1)):
+            if list1[j] > max1:
+                max1 = list1[j]
+ 
+        list1.remove(max1)
+        final_list.append(max1)
+ 
+    print(final_list)
+ 
+ 
+# Driver code
+list1 = [2, 6, 41, 85, 0, 3, 7, 6, 10]
+N = 2
+ 
+# Calling the function
+Nmaxelements(list1, N)
+
+--12--
+
+def Repeat(x):
+    _size = len(x)
+    repeated = []
+    for i in range(_size):
+        k = i + 1
+        for j in range(k, _size):
+            if x[i] == x[j] and x[i] not in repeated:
+                repeated.append(x[i])
+    return repeated
+ 
+# Driver Code
+list1 = [10, 20, 30, 20, 20, 30, 40, 
+         50, -20, 60, 60, -20, -20]
+print (Repeat(list1))
