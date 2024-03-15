@@ -1,0 +1,11 @@
+a=5.5
+b=6
+# c=$((a+b))
+c=`expr "$a + $b" | bc -l`
+d=`expr "$b - $a" | bc -l`
+e=`expr "$a * $b" | bc -l`
+f=`expr "$a / $b" | bc -l`
+echo "$a+$b=$c"
+echo "$b-$a=$d"
+echo "$a*$b=$e"
+echo "$a/$b=$f"
