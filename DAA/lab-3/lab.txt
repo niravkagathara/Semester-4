@@ -1,0 +1,4 @@
+1. transpose the matrix.
+2. print the addition of all diagonal elements in matrix.
+3. print the lower triangle of matrix.
+4. find the matrix element from matrix.
