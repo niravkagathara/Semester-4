@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubble Sort Visualization</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  #array-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  .array-item {
+    width: 40px;
+    height: 40px;
+    background-color: dodgerblue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    border-radius: 5px;
+  }
+  #start-btn, #reset-btn {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h1>Bubble Sort Visualization</h1>
+
+<div id="array-container"></div>
+<button id="start-btn">Start Sorting</button>
+<button id="reset-btn">Reset</button>
+
+<script>
+// Function to generate random integers
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Function to create random array
+function generateRandomArray(length, min, max) {
+  let arr = [];
+  for (let i = 0; i < length; i++) {
+    arr.push(getRandomInt(min, max));
+  }
+  return arr;
+}
+
+// Function to visualize the array
+function visualizeArray(arr) {
+  const arrayContainer = document.getElementById('array-container');
+  arrayContainer.innerHTML = '';
+  arr.forEach(item => {
+    const arrayItem = document.createElement('div');
+    arrayItem.classList.add('array-item');
+    arrayItem.style.height = `${item * 5}px`; // Visualize the height based on the value
+    arrayItem.textContent = item;
+    arrayContainer.appendChild(arrayItem);
+  });
+}
+
+// Bubble Sort Algorithm
+async function bubbleSort(arr) {
+  const len = arr.length;
+  for (let i = 0; i < len - 1; i++) {
+    for (let j = 0; j < len - 1 - i; j++) {
+      // Visualizing the comparison
+      document.querySelectorAll('.array-item')[j].style.backgroundColor = 'red';
+      document.querySelectorAll('.array-item')[j + 1].style.backgroundColor = 'red';
+      await new Promise(resolve => setTimeout(resolve, 500)); // Delay for visualization
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        visualizeArray(arr);
+      }
+      // Resetting color after comparison
+      document.querySelectorAll('.array-item')[j].style.backgroundColor = 'dodgerblue';
+      document.querySelectorAll('.array-item')[j + 1].style.backgroundColor = 'dodgerblue';
+    }
+  }
+}
+
+document.getElementById('start-btn').addEventListener('click', async () => {
+  const arr = generateRandomArray(10, 1, 20); // Generate random array
+  visualizeArray(arr); // Visualize initial array
+  await bubbleSort(arr); // Sort the array
+});
+
+document.getElementById('reset-btn').addEventListener('click', () => {
+  window.location.reload(); // Reload the page to reset
+});
+
+</script>
+
+</body>
+</html>
